@@ -27,7 +27,7 @@ GNU General Public License for more details.
 
 import hmac
 import hashlib
-import httplib
+import httplib2
 import json
 import yaml
 import os
@@ -112,7 +112,7 @@ class CoinSpot:
         headers['User-Agent'] = 'py-coinspot-api/%s (https://github.com/geekpete/py-coinspot-api)' % __version__
         if self._debug:
             logging.warning(self.timestamp + " " + str(headers))
-        conn = httplib.HTTPSConnection(self._endpoint)
+        conn = httplib2.HTTPSConnection(self._endpoint)
         if self._debug:
             conn.set_debuglevel(1)
         response_data = '{"status":"invalid","error": "Did not make request"}'
