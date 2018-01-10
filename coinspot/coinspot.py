@@ -97,7 +97,7 @@ class CoinSpot:
         logging.basicConfig(filename=os.path.realpath(os.path.dirname(sys.argv[0])) + "/" + self._logging, level=logging.DEBUG)
 
     def _get_signed_request(self, data):
-        return hmac.new(self._api_secret, data, hashlib.sha512).hexdigest()
+        return hmac.new(bytearray(self._api_secret, 'utf-8'), bytearray(data, 'utf-8'), hashlib.sha512).hexdigest()
 
     def _request(self, path, postdata):
         nonce = int(time()*1000000)
