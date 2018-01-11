@@ -303,3 +303,27 @@ class CoinSpot:
         """
         request_data = {'cointype':cointype, 'amount':amount, 'rate':rate}
         self._request('/api/my/sell', request_data)
+        
+    def cancelsell(self, orderid):
+        """
+        Cancel sell orders
+
+        :param id
+        :return:
+            - **status** - ok, error
+
+        """
+        request_data = {'id':orderid}
+        self._request('/api/my/sell/cancel', request_data)
+        
+    def cancelbuy(self, orderid):
+        """
+        Cancel buy orders
+
+        :param id
+        :return:
+            - **status** - ok, error
+
+        """
+        request_data = {'id':orderid}
+        self._request('/api/my/buy/cancel', request_data)
